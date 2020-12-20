@@ -30,6 +30,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\ActivateJobsRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\ServerStreamingCall
      */
     public function ActivateJobs(\ZeebeClient\ActivateJobsRequest $argument,
       $metadata = [], $options = []) {
@@ -49,6 +50,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\CancelWorkflowInstanceRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function CancelWorkflowInstance(\ZeebeClient\CancelWorkflowInstanceRequest $argument,
       $metadata = [], $options = []) {
@@ -73,6 +75,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\CompleteJobRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function CompleteJob(\ZeebeClient\CompleteJobRequest $argument,
       $metadata = [], $options = []) {
@@ -106,12 +109,29 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\CreateWorkflowInstanceRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function CreateWorkflowInstance(\ZeebeClient\CreateWorkflowInstanceRequest $argument,
       $metadata = [], $options = []) {
         return $this->_simpleRequest('/gateway_protocol.Gateway/CreateWorkflowInstance',
         $argument,
         ['\ZeebeClient\CreateWorkflowInstanceResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     *
+     * Behaves similarly to `rpc CreateWorkflowInstance`, except that a successful response is received when the workflow completes successfully.
+     * @param \ZeebeClient\CreateWorkflowInstanceWithResultRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function CreateWorkflowInstanceWithResult(\ZeebeClient\CreateWorkflowInstanceWithResultRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/gateway_protocol.Gateway/CreateWorkflowInstanceWithResult',
+        $argument,
+        ['\ZeebeClient\CreateWorkflowInstanceWithResultResponse', 'decode'],
         $metadata, $options);
     }
 
@@ -130,6 +150,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\DeployWorkflowRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function DeployWorkflow(\ZeebeClient\DeployWorkflowRequest $argument,
       $metadata = [], $options = []) {
@@ -156,12 +177,36 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\FailJobRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function FailJob(\ZeebeClient\FailJobRequest $argument,
       $metadata = [], $options = []) {
         return $this->_simpleRequest('/gateway_protocol.Gateway/FailJob',
         $argument,
         ['\ZeebeClient\FailJobResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     *
+     * Reports a business error (i.e. non-technical) that occurs while processing a job. The error is handled in the workflow by an error catch event. If there is no error catch event with the specified errorCode then an incident will be raised instead.
+     *
+     * Errors:
+     * NOT_FOUND:
+     * - no job was found with the given key
+     *
+     * FAILED_PRECONDITION:
+     * - the job is not in an activated state
+     * @param \ZeebeClient\ThrowErrorRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function ThrowError(\ZeebeClient\ThrowErrorRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/gateway_protocol.Gateway/ThrowError',
+        $argument,
+        ['\ZeebeClient\ThrowErrorResponse', 'decode'],
         $metadata, $options);
     }
 
@@ -176,6 +221,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\PublishMessageRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function PublishMessage(\ZeebeClient\PublishMessageRequest $argument,
       $metadata = [], $options = []) {
@@ -197,6 +243,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\ResolveIncidentRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function ResolveIncident(\ZeebeClient\ResolveIncidentRequest $argument,
       $metadata = [], $options = []) {
@@ -220,6 +267,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\SetVariablesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function SetVariables(\ZeebeClient\SetVariablesRequest $argument,
       $metadata = [], $options = []) {
@@ -235,6 +283,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\TopologyRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function Topology(\ZeebeClient\TopologyRequest $argument,
       $metadata = [], $options = []) {
@@ -258,6 +307,7 @@ class GatewayClient extends \Grpc\BaseStub {
      * @param \ZeebeClient\UpdateJobRetriesRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
+     * @return \Grpc\UnaryCall
      */
     public function UpdateJobRetries(\ZeebeClient\UpdateJobRetriesRequest $argument,
       $metadata = [], $options = []) {

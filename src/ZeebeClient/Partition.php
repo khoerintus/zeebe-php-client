@@ -18,13 +18,13 @@ class Partition extends \Google\Protobuf\Internal\Message
      *
      * Generated from protobuf field <code>int32 partitionId = 1;</code>
      */
-    private $partitionId = 0;
+    protected $partitionId = 0;
     /**
      * the role of the broker for this partition
      *
      * Generated from protobuf field <code>.gateway_protocol.Partition.PartitionBrokerRole role = 2;</code>
      */
-    private $role = 0;
+    protected $role = 0;
 
     /**
      * Constructor.
@@ -89,7 +89,7 @@ class Partition extends \Google\Protobuf\Internal\Message
      */
     public function setRole($var)
     {
-        GPBUtil::checkEnum($var, \ZeebeClient\Partition_PartitionBrokerRole::class);
+        GPBUtil::checkEnum($var, \ZeebeClient\Partition\PartitionBrokerRole::class);
         $this->role = $var;
 
         return $this;
